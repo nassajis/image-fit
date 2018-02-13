@@ -18,11 +18,21 @@ class ImageController extends Controller
                 $h = $height * 10;
                 if ($h <= 0) $h = null;
 
-                if ($w > 2000 || $h > 1500)
-                    abort(404);
+                if ($w > 20000 || $h > 15000)
+                    if (($image404 = config('image-fit.image_404')) && file_exists(public_path($image404))) {
+                        $img = Image::make($image404);
+                    } elseif (file_exists(public_path('vendor/image-fit/404.jpg'))) {
+                        $img = Image::make(public_path('vendor/image-fit/404.jpg'));
+                    } else
+                        die('Please Publish Command : php artisan vendor:publish --provider="Nassajis\ImageFit\ImageFitServiceProvider"');
 
                 if (!in_array($type, ['_', '-']))
-                    return abort(404);
+                    if (($image404 = config('image-fit.image_404')) && file_exists(public_path($image404))) {
+                        $img = Image::make($image404);
+                    } elseif (file_exists(public_path('vendor/image-fit/404.jpg'))) {
+                        $img = Image::make(public_path('vendor/image-fit/404.jpg'));
+                    } else
+                        die('Please Publish Command : php artisan vendor:publish --provider="Nassajis\ImageFit\ImageFitServiceProvider"');
 
                 if (file_exists(public_path("files{$image}.{$ext}")))
                     $img = Image::make("files{$image}.{$ext}");
@@ -32,13 +42,13 @@ class ImageController extends Controller
                     } elseif (file_exists(public_path('vendor/image-fit/404.jpg'))) {
                         $img = Image::make(public_path('vendor/image-fit/404.jpg'));
                     } else
-                        return abort(404);
+                        die('Please Publish Command : php artisan vendor:publish --provider="Nassajis\ImageFit\ImageFitServiceProvider"');
                 }
 
                 switch ($type) {
                     case '_':
                         if ($w == null || $h == null)
-                            return abort(404);
+                            die('Please Publish Command : php artisan vendor:publish --provider="Nassajis\ImageFit\ImageFitServiceProvider"');
                         else {
                             $img->fit($w, $h);
                         }
@@ -65,6 +75,6 @@ class ImageController extends Controller
         } catch (\Exception $e) {
         }
 
-        return abort(404);
+        die('Please Publish Command : php artisan vendor:publish --provider="Nassajis\ImageFit\ImageFitServiceProvider"');
     }
 }
