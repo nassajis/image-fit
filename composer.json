@@ -1,5 +1,5 @@
 {
-	"name": "amir2b/image-fit",
+	"name": "nassajis/image-fit",
 	"type": "library",
 	"description": "This package is for fitting image",
 	"keywords": ["Laravel", "Image", "Fit"],
@@ -10,14 +10,13 @@
 	},
 	"authors": [
 		{
-			"name": "Amir Bashiri",
-			"email": "bashiri.net@gmail.com",
-			"role": "Developer"
+			"name": "Nassaji",
+			"email": "Nassaji.s@gmail.com"
 		}
 	],
 	"autoload": {
 		"psr-4": {
-			"Amir2b\\ImageFit\\": "src"
+			"Nassajis\\ImageFit\\": "src"
 		},
 		"files": [
 			"files/helpers.php"

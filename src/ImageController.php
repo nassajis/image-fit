@@ -1,6 +1,6 @@
 <?php
 
-namespace Amir2b\ImageFit;
+namespace Nassajis\ImageFit;
 
 use App\Http\Controllers\Controller;
 use Image;

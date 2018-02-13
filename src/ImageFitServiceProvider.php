@@ -1,6 +1,6 @@
 <?php
 
-namespace Amir2b\ImageFit;
+namespace Nassajis\ImageFit;
 
 use Illuminate\Support\ServiceProvider;
 
