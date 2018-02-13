@@ -51,6 +51,7 @@ Copy the package config to your local config with the publish command:
 php artisan vendor:publish --provider="Nassajis\ImageFit\ImageFitServiceProvider"
 ```
 
+Response Image width & height
 ```shell
 width & height * 10
 ```
