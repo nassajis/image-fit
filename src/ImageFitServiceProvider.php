@@ -24,11 +24,11 @@ class ImageFitServiceProvider extends ServiceProvider
 
         // HTTP routing
         if ((double) $this->app->version() >= 5.2) {
-            $this->app['router']->get($this->app['config']->get('image-fit.prefix') . '{image}{type}{width}x{height}.{ext}', '\Amir2b\ImageFit\ImageController@create')
+            $this->app['router']->get($this->app['config']->get('image-fit.prefix') . '{image}{type}{width}x{height}.{ext}', '\Nassajis\ImageFit\ImageController@create')
                 ->where(['image' => '(/[\w\-\.\(\)]+)+', 'type' => '_|-', 'width' => '\d+', 'height' => '\d+', 'ext' => 'jpe?g|png|gif|JPE?G'])
                 ->middleware('web');
         } else {
-            $this->app['router']->get($this->app['config']->get('image-fit.prefix') . '{image}{type}{width}x{height}.{ext}', '\Amir2b\ImageFit\ImageController@create')
+            $this->app['router']->get($this->app['config']->get('image-fit.prefix') . '{image}{type}{width}x{height}.{ext}', '\Nassajis\ImageFit\ImageController@create')
                 ->where(['image' => '(/[\w\-\.\(\)]+)+', 'type' => '_|-', 'width' => '\d+', 'height' => '\d+', 'ext' => 'jpe?g|png|gif|JPE?G']);
         }
     }
